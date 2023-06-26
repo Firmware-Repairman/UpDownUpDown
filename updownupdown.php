@@ -175,6 +175,9 @@ if (!class_exists("UpDownPostCommentVotes"))
 					case "simple":
 						wp_register_style ( 'updownupdown', plugins_url ( '/style/updownupdown-simple.css', __FILE__));
 						break;
+					case "row":
+							wp_register_style ( 'updownupdown', plugins_url ( '/style/updownupdown-row.css', __FILE__));
+							break;
 					default:
 				wp_register_style( 'updownupdown', plugins_url( '/style/updownupdown.css', __FILE__));
 				}
@@ -480,24 +483,18 @@ if (!class_exists("UpDownPostCommentVotes"))
 				$a_id = $a->comment_ID;
 				$b_id = $b->comment_ID;
 
-				$a_missing = ! array_key_exists( $a_id, $net_votes );
-				$b_missing = ! array_key_exists( $b_id, $net_votes );
-				if ( $a_missing ) {
-					// a has no votes
-					if ( $b_missing ) {
-						// neither a nor b has votes
-						return 0;
-					} else {
-						// a has no votes, but b does, b goes first
-						return 1;
-					}
-				} else if ($b_missing ) {
-					// b has no votes, but a does, a goes first
-					return -1;
+				if ( ! array_key_exists( $a_id, $net_votes )) {
+					$net_votes[ $a_id ] = 0;
+					$num_votes[ $a_id ] = 0;
+				}
+				if ( ! array_key_exists( $b_id, $net_votes )) {
+					$net_votes[ $b_id ] = 0;
+					$num_votes[ $b_id ] = 0;
 				}
 
 				$a_net = $net_votes[ $a_id ];
 				$b_net = $net_votes[ $b_id ];
+
 				if ( $a_net > $b_net) {
 					// a has net more up votes than b
 					return -1;
@@ -514,7 +511,10 @@ if (!class_exists("UpDownPostCommentVotes"))
 		}
 
 		function add_vote_to_comment( $text, $comment ) {
-			return up_down_comment_votes( $comment->comment_ID, $comment->comment_post_ID ).$text;
+			if (get_option ("updown_css") == "row")
+				return '<div style="display:block"></div>'.$text.up_down_comment_votes( $comment->comment_ID, $comment->comment_post_ID ).'<div style="display:block"></div>';
+			else
+				return up_down_comment_votes( $comment->comment_ID, $comment->comment_post_ID ).$text;
 		}
 
 	} //class:UpDownPostCommentVotes
@@ -543,7 +543,7 @@ if (!class_exists("UpDownPostCommentVotes"))
 
 		$text = "";
 		$text .= '<div class="updown-vote-box updown-post" id="updown-post-'.$post_id.'" post-id="'.$post_id.'">';
-		$up_down_plugin->render_vote_badge( $vote_counts["up"], $vote_counts["down"], $allow_votes, $existing_vote );
+		$text .= $up_down_plugin->render_vote_badge( $vote_counts["up"], $vote_counts["down"], $allow_votes, $existing_vote );
 		$text .= '</div>';
 
 		return $text;
@@ -626,6 +626,9 @@ if (!class_exists("UpDownPostCommentVotes"))
 		if (get_option ("updown_css") == "simple") $selected = "selected ";
 		else $selected = "";
 		echo '<option value="simple"'.$selected.'>simple</option>';
+		if (get_option ("updown_css") == "row") $selected = "selected ";
+		else $selected = "";
+		echo '<option value="row"'.$selected.'>row</option>';
 		echo '</select> <span class="description">Choose basic badge style. You can also override CSS in your theme.</span></td></tr>';
 
 		// counter type
