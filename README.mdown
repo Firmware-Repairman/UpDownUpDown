@@ -4,35 +4,77 @@ Simple WordPress plugin for up/down voting on posts and comments.
 
 ## Description ##
 
-UpDownUpDownWithSorting a voting panel for adding up/down voting 
+UpDownUpDownWithSorting a voting panel for adding up/down voting
 for any post or comment. Anonymous guest visitors can either be allowed to vote
 (tracked by ip address) or be denied voting and shown a view-only vote count
 badge. Votes are registered on the server without refreshing the page.
 
-Comment voting can be optionally sorted in order or by net up votes.
-
 This plugin was initially developed as a project of Wharton Research Data Services.
 
-This plugin was updated for Mission Local by Craig Mautner
-  
+This plugin was updated for [Mission Local](http://missionlocal.org) by Craig
+Mautner
+
 ## Installation ##
 
 1. Upload the folder containing the plugin to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Visit the plugin settings page to customize it.
+1. Visit the plugin settings page to customize it
 
-## Screenshots ##
+## Settings ##
 
-1. This shows a badge in a post with no votes yet.
-![](screenshot-1.png)
-2. This shows a badge in a post with a vote set.
-![](screenshot-2.png)
-3. This shows a view-only badge if voting is disabled via theme function flag or guest voting is disabled in the admin settings.
-![](screenshot-3.png)
-4. This shows a badge using the alternate simple style.
-![](screenshot-4.png)
-5. Admin settings page for the plugin.
+Under the Wordpress Settings is the UpDownUpDownWithSortings menu. See image below
 ![](screenshot-5.png)
+
+The following choices are available:
+
+**Allow guests to vote:** checking this box allows users who are not signed in
+to vote on the comment or post. For users who are not logged in the IP address is
+used to record voting and keep guests from voting more than once
+
+**Badge style:** This sets the appearance and location of the votes. Choices
+are `default`, `simple` and `row`. Examples for each choice are in the
+sections below
+
+### default badge style ###
+
+The default badge is placed to the left of the comment and includes a background
+with a shadow and a gradient.
+
+This shows a default badge in a post with no votes yet.<br>
+![](screenshot-1.png)
+
+This shows a default badge in a post with a vote set.<br>
+![](screenshot-2.png)
+
+This shows a default view-only badge if voting is disabled via theme function flag or guest voting is disabled in the admin settings.<br>
+![](screenshot-3.png)
+
+### simple badge style ###
+
+The simple style removes the shadowed and gradient background. This shows a badge using the alternate simple style.
+![](screenshot-4.png)
+
+### row badge style ###
+
+The row badge style is placed below the comment and has no background.
+
+This shows a voteable badge using the row style.
+![](screenshot-row-vote.png)
+
+This shows a non-voteable badge using the row style.
+![](screenshot-row-no-vote.png)
+
+**Counter type:** Selecting <u>Plus/Minus</u> displays the number of up votes and the number of down votes next to each arrow. Selecting <u>Total</u> displays the net votes (up votes minus down votes)
+
+**Sign total counter:** Note, this setting only applies if **Counter type** is set to <u>Total</u>. Selecting <u>sign</u> displays a `+` or `-` next to the total number of votes. Selecting <u>don't sign</u> omits the `+` or `-` and the sign of the net votes are indicated by text color. Green for net positive, and red for net negative.
+
+**Vote label if voteable:** The text to add following the arrow voting buttons if
+the user is able to vote. Example above: "click arrow to vote"
+
+**Vote label if not voteable:** The text to add following the arrow voting buttons
+if the user is not able to vote. Example above: "votes; log in to vote"
+
+**Sort comments by up-votes?:** Selecting <u>Sort comments by up-votes</u> reorders the votes when the page is reloaded so that the most popular comments are at the top. Comments with the same number of net votes are sorted by the fewest number of voters first. Selecting <u>Sort comments by order entered</u> leaves comments in chronological order
 
 ## Changelog ##
 
