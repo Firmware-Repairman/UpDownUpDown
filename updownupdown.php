@@ -3,7 +3,7 @@
  * Plugin Name: UpDownUpDownWithSorting
  * Plugin URI: https://github.com/Firmware-Repairman/UpDownUpDownWithSorting
  * Description: Up/down voting for posts and comments
- * Version: 2.0
+ * Version: 2.1
  * Author: Craig Mautner
  * Author URI:
  * License: GPL2
@@ -30,6 +30,8 @@
  *
  *	2011 This plugin was initially developed as a project of Wharton Research Data Services.
  *	2023 This plugin was updated and enhanced as a project for Mission Local
+ *
+ * 2023-07-03 Release 2.1 Added rows
 */
 
 if (!class_exists("UpDownPostCommentVotes"))
