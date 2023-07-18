@@ -78,6 +78,11 @@ if the user is not able to vote. Example above: "votes; log in to vote"
 
 ## Changelog ##
 
+# 2.1 #
+* Added row display at bottom of comments
+* Cleaned up sorting by up-votes
+* Cleaned up spacing
+
 # 2.0 #
 * Hooks to insert html into comments is done through WordPress filters rather than modifying themes
 * Comments may be sorted by net up-votes

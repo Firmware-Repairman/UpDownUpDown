@@ -34,7 +34,7 @@ div.updown-vote-box {
 
   div.updown-up-count, div.updown-pos-count {
     color: #5ebc40;
-    padding-left: 4px !important;
+    padding-left: 8px !important;
   }
 
   div.updown-down-count, div.updown-neg-count {
