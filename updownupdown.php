@@ -495,16 +495,27 @@ if (!class_exists("UpDownPostCommentVotes"))
 				$a_net = $net_votes[ $a_id ];
 				$b_net = $net_votes[ $b_id ];
 
-				if ( $a_net > $b_net) {
-					// a has net more up votes than b
-					return -1;
-				} else if ( $b_net > $a_net) {
-					// b has net more up votes than a
-					return 1;
-				} else {
-					// same number of net up votes, whichever did it with fewer down votes goes first
-					return $num_votes[ $a_id ] - $num_votes[ $b_id ];
+				$a_num = $num_votes[ $a_id ];
+				$b_num = $num_votes[ $b_id ];
+
+				if ( $a_num == 0 && $b_num == 0 ) {
+					// Neither has been voted on newer comment (higher comment ID) goes first
+					return $b_id - $a_id;
+				} else if ( $a_num == 0 || $b_num == 0 ) {
+					// One of these is empty, the other has votes
+					if ( $a_net == 0 && $b_net == 0 ) {
+						// the one with votes goes first
+						return $b_num - $a_num;
+					}
+					// A positive one goes before the net0, a negative one goes after the net0
+					return $b_net - $a_net;
+				} else if ( $a_net == $b_net ) {
+					// Whichever did it with more engagement goes first
+					return $b_num - $a_num;
 				}
+
+				// Finally, the one with more net votes goes first
+				return $b_net - $a_net;
 			});
 
 			return $comments;
