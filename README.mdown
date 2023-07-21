@@ -78,6 +78,12 @@ if the user is not able to vote. Example above: "votes; log in to vote"
 
 ## Changelog ##
 
+# 2.1.2 #
+* Replaced .png files with .svg to provide crisper images
+
+# 2.1.1 #
+* Added css versioning to force cache replacement when updating css files
+
 # 2.1 #
 * Added row display at bottom of comments
 * Cleaned up sorting by up-votes
