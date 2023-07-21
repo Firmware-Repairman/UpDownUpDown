@@ -3,7 +3,7 @@
  * Plugin Name: UpDownUpDownWithSorting
  * Plugin URI: https://github.com/Firmware-Repairman/UpDownUpDownWithSorting
  * Description: Up/down voting for posts and comments
- * Version: 2.1
+ * Version: 2.1.1
  * Author: Craig Mautner
  * Author URI:
  * License: GPL2
@@ -170,16 +170,18 @@ if (!class_exists("UpDownPostCommentVotes"))
 			if ( !is_admin() )
 			{
 				// different styles available
+				$css_version = "2.1";
 				switch (get_option ("updown_css"))
 				{
 					case "simple":
-						wp_register_style ( 'updownupdown', plugins_url ( '/style/updownupdown-simple.css', __FILE__));
+						wp_register_style ( 'updownupdown', plugins_url ( '/style/updownupdown-simple.css', __FILE__), array(), $css_version);
 						break;
 					case "row":
-							wp_register_style ( 'updownupdown', plugins_url ( '/style/updownupdown-row.css', __FILE__));
-							break;
+						wp_register_style ( 'updownupdown', plugins_url ( '/style/updownupdown-row.css', __FILE__), array(), $css_version);
+						break;
 					default:
-				wp_register_style( 'updownupdown', plugins_url( '/style/updownupdown.css', __FILE__));
+						wp_register_style( 'updownupdown', plugins_url( '/style/updownupdown.css', __FILE__), array(), $css_version);
+						break;
 				}
 				wp_enqueue_style( 'updownupdown' );
 
