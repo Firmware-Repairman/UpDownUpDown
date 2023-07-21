@@ -188,7 +188,7 @@ if (!class_exists("UpDownPostCommentVotes"))
 				 wp_register_script( 'updownupdown',
 						 plugins_url( '/js/updownupdown.js', __FILE__),
 						 array( 'jquery' ),
-						 '1.1' );
+						 '2.1.2' );
 				 wp_enqueue_script('updownupdown');
 			}
 		}

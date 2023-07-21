@@ -119,11 +119,11 @@ jQuery(document).ready(function(){
   }
 
   function highlightButton( buttonObj ) {
-    buttonObj.attr( 'src', buttonObj.attr( 'src' ).replace( '.png', '-on.png' ) );
+    buttonObj.attr( 'src', buttonObj.attr( 'src' ).replace( '.svg', '-on.svg' ) );
   }
 
   function dehighlightButton( buttonObj ) {
-    buttonObj.attr( 'src', buttonObj.attr( 'src' ).replace( '-on.png', '.png' ) );
+    buttonObj.attr( 'src', buttonObj.attr( 'src' ).replace( '-on.svg', '.svg' ) );
   }
 
 	jQuery('.updown-button').on( 'click', function( event )
@@ -133,7 +133,7 @@ jQuery(document).ready(function(){
     var button_obj = jQuery(event.target);
 
     //Remove vote if clicking same vote again
-		if ( button_obj.attr('src').indexOf('-on.png') >= 0 )
+		if ( button_obj.attr('src').indexOf('-on.svg') >= 0 )
 			vote_value = 0;
 		else
 			vote_value = button_obj.attr('vote-direction');
