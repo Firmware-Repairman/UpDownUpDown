@@ -170,7 +170,7 @@ if (!class_exists("UpDownPostCommentVotes"))
 			if ( !is_admin() )
 			{
 				// different styles available
-				$css_version = "2.1";
+				$css_version = "2.1.2";
 				switch (get_option ("updown_css"))
 				{
 					case "simple":
@@ -278,8 +278,8 @@ if (!class_exists("UpDownPostCommentVotes"))
 			elseif ( $existing_vote < 0 )
 				$img_down_status = '-on';
 
-			$up_img_src = plugins_url( '/images/arrow-up'.$img_up_status.'.png', __FILE__);
-			$down_img_src = plugins_url( '/images/arrow-down'.$img_down_status.'.png', __FILE__);
+			$up_img_src = plugins_url( '/images/arrow-up'.$img_up_status.'.svg', __FILE__);
+			$down_img_src = plugins_url( '/images/arrow-down'.$img_down_status.'.svg', __FILE__);
 
 			$vote_total_count = $vote_up_count - $vote_down_count;
 			$vote_total_count_num = $vote_up_count + $vote_down_count;
