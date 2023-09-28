@@ -1,5 +1,6 @@
 # UpDownUpDownWithSorting #
 
+Yet another example of craig screwing it up
 Simple WordPress plugin for up/down voting on posts and comments.
 
 ## Description ##
@@ -106,3 +107,4 @@ if the user is not able to vote. Example above: "votes; log in to vote"
 
 # 1.0 #
 * Initial release.
+
